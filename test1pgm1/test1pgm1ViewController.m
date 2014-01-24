@@ -13,15 +13,18 @@
 @end
 
 @implementation test1pgm1ViewController
+@synthesize myLabel;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    myLabel.textColor = [UIColor greenColor];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
 {
+    [self setMyLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -31,4 +34,17 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)swap:(id)sender {
+    static int color = 0;
+    color++;
+    
+    if (color == 1){
+        myLabel.textColor = [UIColor redColor];
+    }
+    else {
+        myLabel.textColor = [UIColor greenColor];
+        color = 0;
+    }
+    
+}
 @end
